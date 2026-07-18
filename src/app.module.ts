@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { CatsController } from './cats/Controllers/cats.controller';
 import { CatService } from './cats/Services/cats.service';
@@ -8,11 +9,11 @@ import { CatEntity } from './cats/Entities/cat.entity';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '172.30.113.63',
-      port: 5432,
-      username: 'postgres',
-      password: 't123',
-      database: 'catdb',
+      host: process.env.DB_HOST,
+      port: Number(process.env.DB_PORT),
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true, // dev only — auto-creates/updates tables from entities
     }),
