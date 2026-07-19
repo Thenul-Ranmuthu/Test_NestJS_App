@@ -1,9 +1,7 @@
 import 'dotenv/config';
 import { Module } from '@nestjs/common';
-import { CatsController } from './cats/Controllers/cats.controller';
-import { CatService } from './cats/Services/cats.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { CatEntity } from './cats/Entities/cat.entity';
+import { CatsModule } from './cats/cats.module';
 
 @Module({
   imports: [
@@ -15,11 +13,9 @@ import { CatEntity } from './cats/Entities/cat.entity';
       password: process.env.DB_PASSWORD,
       database: process.env.DB,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // dev only — auto-creates/updates tables from entities
+      synchronize: true,
     }),
-    TypeOrmModule.forFeature([CatEntity]),
+    CatsModule,
   ],
-  controllers: [CatsController],
-  providers: [CatService],
 })
 export class AppModule {}
