@@ -1,6 +1,6 @@
 import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { CatEntity } from '../Entities/cat.entity';
+import { CatEntity } from '../cat.entity';
 import { Repository } from 'typeorm';
 import { CreateCatDto } from '../Dtos/createCatDto';
 

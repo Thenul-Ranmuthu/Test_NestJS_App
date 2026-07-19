@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { CatService } from '../Services/cats.service';
 import { CreateCatDto } from '../Dtos/createCatDto';
-import { CatEntity } from '../Entities/cat.entity';
+import { CatEntity } from '../cat.entity';
 
 @Controller('cats')
 export class CatsController {
