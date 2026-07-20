@@ -17,7 +17,6 @@ import { JwtAuthModule } from './jwt/jwt_auth.module';
       synchronize: true,
     }),
     CatsModule,
-    JwtAuthModule,
   ],
 })
 export class AppModule {}
