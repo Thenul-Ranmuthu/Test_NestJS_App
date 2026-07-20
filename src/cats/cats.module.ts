@@ -5,20 +5,11 @@ import { CatsController } from './Controllers/cats.controller';
 import { CatService } from './Services/cats.service';
 import { CatsAuthController } from './Controllers/cats.auth.controller';
 import { CatsAuthService } from './Services/cats.auth.service';
-import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
-import { jwt_secret, JwtStrategy } from 'src/jwt/jwt.strategy';
+import { JwtAuthModule } from 'src/jwt/jwt_auth.module';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([CatEntity]),
-    PassportModule,
-    JwtModule.register({
-      secret: jwt_secret(),
-      signOptions: { expiresIn: '1h' },
-    }),
-  ],
+  imports: [TypeOrmModule.forFeature([CatEntity]), JwtAuthModule],
   controllers: [CatsController, CatsAuthController],
-  providers: [CatService, CatsAuthService, JwtStrategy],
+  providers: [CatService, CatsAuthService],
 })
 export class CatsModule {}

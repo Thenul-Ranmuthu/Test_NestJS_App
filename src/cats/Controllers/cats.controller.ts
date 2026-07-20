@@ -7,11 +7,9 @@ import {
   Param,
   ParseIntPipe,
   Patch,
-  Post,
   UseGuards,
 } from '@nestjs/common';
 import { CatService } from '../Services/cats.service';
-import { CreateCatDto } from '../Dtos/createCats.dto';
 import { CatEntity } from '../cat.entity';
 import { JwtAuthGuard } from 'src/jwt/jwt_auth.gard';
 import { UpdateCatsDto } from '../Dtos/updateCats.dto';

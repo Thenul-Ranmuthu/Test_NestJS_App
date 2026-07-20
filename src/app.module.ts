@@ -2,9 +2,7 @@ import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CatsModule } from './cats/cats.module';
-import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
-import { jwt_secret } from './jwt/jwt.strategy';
+import { JwtAuthModule } from './jwt/jwt_auth.module';
 
 @Module({
   imports: [
@@ -19,6 +17,7 @@ import { jwt_secret } from './jwt/jwt.strategy';
       synchronize: true,
     }),
     CatsModule,
+    JwtAuthModule,
   ],
 })
 export class AppModule {}
