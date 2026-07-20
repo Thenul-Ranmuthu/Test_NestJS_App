@@ -8,10 +8,13 @@ import {
   ParseIntPipe,
   Patch,
   Post,
+  UseGuards,
 } from '@nestjs/common';
 import { CatService } from '../Services/cats.service';
-import { CreateCatDto } from '../Dtos/createCatDto';
+import { CreateCatDto } from '../Dtos/createCats.dto';
 import { CatEntity } from '../cat.entity';
+import { JwtAuthGuard } from 'src/jwt/jwt_auth.gard';
+import { UpdateCatsDto } from '../Dtos/updateCats.dto';
 
 @Controller('cats')
 export class CatsController {
@@ -24,34 +27,38 @@ export class CatsController {
     return this.catService.getCatIntro();
   }
 
-  @Post('create')
-  createCat(@Body() reqDto: CreateCatDto): Promise<CreateCatDto> {
-    this.logger.log(`Received: ${JSON.stringify(reqDto)}`);
-    return this.catService.createCat(reqDto);
-  }
+  // @Post('create')
+  // createCat(@Body() reqDto: CreateCatDto): Promise<CreateCatDto> {
+  //   this.logger.log(`Received: ${JSON.stringify(reqDto)}`);
+  //   return this.catService.createCat(reqDto);
+  // }
 
+  @UseGuards(JwtAuthGuard)
   @Get('all')
   getAll(): Promise<CatEntity[]> {
     this.logger.log(`Received: GET ALL CATS`);
     return this.catService.getAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @Get('getOne/:id')
   getOne(@Param('id', ParseIntPipe) id: number): Promise<CatEntity> {
     this.logger.log(`Received: Get one cat with Id:${id}`);
     return this.catService.getOne(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch('UpdateCat/:id')
   update(
     @Param('id', ParseIntPipe) id: number,
-    @Body() updateReq: Partial<CreateCatDto>,
+    @Body() updateReq: UpdateCatsDto,
   ) {
     this.logger.log(`Received: Update cat with Id:${id}`);
     this.logger.log(`${JSON.stringify(updateReq)}`);
     return this.catService.update(id, updateReq);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete('deleteCat/:id')
   remove(@Param('id', ParseIntPipe) id: number) {
     this.logger.log(`Received: Delete cat with Id:${id}`);

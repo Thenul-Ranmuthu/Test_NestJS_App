@@ -6,4 +6,10 @@ export class CreateCatDto {
 
   @IsInt()
   age!: number;
+
+  @IsString()
+  email!: string;
+
+  @IsString()
+  password!: string;
 }

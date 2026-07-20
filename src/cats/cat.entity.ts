@@ -5,9 +5,15 @@ export class CatEntity {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ nullable: true })
   name!: string;
 
-  @Column()
+  @Column({ nullable: true })
   age!: number;
+
+  @Column()
+  email!: string;
+
+  @Column({ unique: true })
+  password!: string;
 }
