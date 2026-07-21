@@ -2,7 +2,6 @@ import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CatsModule } from './cats/cats.module';
-import { JwtAuthModule } from './jwt/jwt_auth.module';
 
 @Module({
   imports: [

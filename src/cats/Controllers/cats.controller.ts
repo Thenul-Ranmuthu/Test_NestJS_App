@@ -11,7 +11,7 @@ import {
 } from '@nestjs/common';
 import { CatService } from '../Services/cats.service';
 import { CatEntity } from '../cat.entity';
-import { JwtAuthGuard } from 'src/jwt/jwt_auth.gard';
+import { JwtAuthGuard } from '../../jwt/jwt_auth.gard';
 import { UpdateCatsDto } from '../Dtos/updateCats.dto';
 
 @Controller('cats')
