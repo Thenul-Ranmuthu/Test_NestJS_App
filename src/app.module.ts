@@ -2,6 +2,7 @@ import 'dotenv/config';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CatsModule } from './cats/cats.module';
+import { HomeController } from './app.controller';
 
 @Module({
   imports: [
@@ -17,5 +18,6 @@ import { CatsModule } from './cats/cats.module';
     }),
     CatsModule,
   ],
+  controllers:[HomeController]
 })
 export class AppModule {}
