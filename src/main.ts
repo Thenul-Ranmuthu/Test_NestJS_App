@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from '../src/app.module';
+import { AppModule } from './app.module';
 import { Logger, ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
@@ -14,6 +14,6 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  await app.listen(port);
+  await app.listen(port, "0.0.0.0");
 }
 bootstrap();
