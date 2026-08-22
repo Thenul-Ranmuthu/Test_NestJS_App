@@ -18,6 +18,6 @@ import { HomeController } from './app.controller';
     }),
     CatsModule,
   ],
-  controllers:[HomeController]
+  controllers: [HomeController],
 })
 export class AppModule {}
