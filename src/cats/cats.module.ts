@@ -8,6 +8,7 @@ import { CatsAuthService } from './Services/cats.auth.service';
 import { JwtAuthModule } from 'src/jwt/jwt_auth.module';
 
 @Module({
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
   imports: [TypeOrmModule.forFeature([CatEntity]), JwtAuthModule],
   controllers: [CatsController, CatsAuthController],
   providers: [CatService, CatsAuthService],
